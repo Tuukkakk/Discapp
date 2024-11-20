@@ -1,0 +1,54 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Discapp.ManagePlayersPage"
+             Title="Friba tuloskortti">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#111111" Offset="0.0" />
+            <GradientStop Color="#1B6AA1" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="back_icon.png" 
+                     Clicked="OnBackButtonClicked" 
+                     />
+
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="20">
+        <Label Text="Lisää pelaaja"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="White" />
+
+        <Entry x:Name="PlayerNameEntry"
+               Placeholder="Anna pelaajan nimi"
+               HorizontalOptions="FillAndExpand" />
+
+        <Button Text="Lisää pelaaja"
+                Clicked="OnAddPlayerButtonClicked"
+                BackgroundColor="White"
+                TextColor="Black" />
+
+        <ListView x:Name="PlayersListView"
+                  ItemsSource="{Binding playerList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Name}"
+                                   FontSize="20" />
+                            <Button Text="Poista"
+                                    Clicked="OnDeletePlayerButtonClicked"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    HorizontalOptions="End" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

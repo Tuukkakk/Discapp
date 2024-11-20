@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Discapp.PlayRoundPage">
+    <ContentPage.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#111111" Offset="0.0" />
+        <GradientStop Color="#1B6AA1" Offset="1.0" />
+    </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <StackLayout Padding="20">
+        <Label x:Name="CourseNameLabel" FontSize="24" HorizontalOptions="Center" TextColor="White"/>
+        <Label x:Name="HoleInfoLabel" FontSize="18" HorizontalOptions="Center" TextColor="White" Padding="20"/>
+        <Image x:Name="HoleImage" HorizontalOptions="Center" HeightRequest="300" />
+
+        <ScrollView Margin="40">
+            <StackLayout x:Name="PlayerScoresStack" Spacing="30" >
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="100">
+            <Button Text="Edellinen väylä" x:Name="PreviousHoleButton" Clicked="OnPreviousHoleClicked" />
+            <Button Text="Seuraava väylä" x:Name="NextHoleButton" Clicked="OnNextHoleClicked"/>
+        </StackLayout>
+
+        <Button  Text="Lopeta kierros" x:Name="EndRoundButton" Clicked="OnEndRoundClicked" IsVisible="False" HorizontalOptions="Center" />
+
+    </StackLayout>
+
+</ContentPage>

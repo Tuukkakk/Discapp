@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Discapp.StartRound">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#111111" Offset="0.0" />
+            <GradientStop Color="#1B6AA1" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <StackLayout Padding="20">
+        <Label Text="Valitse pelaajat kierrokselle"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="White"/>
+
+        <ListView x:Name="PlayersListView"
+                  ItemsSource="{Binding Players}"
+                  BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding Name}" FontSize="18" VerticalOptions="Center" />
+                            <CheckBox IsChecked="{Binding IsSelected}" VerticalOptions="Center" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Text="Valitse pelirata"
+               FontSize="20"
+               HorizontalOptions="Center"
+               TextColor="White"
+               Margin="0,20,0,10"/>
+        <Picker x:Name="CoursePicker" 
+                SelectedIndexChanged="OnCoursePickerChanged"
+                Title="Valitse pelirata"
+                ItemsSource="{Binding Courses}"
+                ItemDisplayBinding="{Binding Name}">
+        </Picker>
+
+        <Button Text="Aloita kierros" 
+                Clicked="OnStartRoundButtonClicked"
+                BackgroundColor="White"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"/>
+    </StackLayout>
+</ContentPage>
